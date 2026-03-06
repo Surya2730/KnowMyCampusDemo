@@ -94,7 +94,7 @@ const Forum = () => {
             <h2 className="title mb-20">Discussion Forum</h2>
 
             {/* Create Post Section */}
-            {userInfo && userInfo.role === 'Student' && (
+            {userInfo && (
                 <div className="card forum-create mb-20">
                     <h3>Start a Discussion</h3>
                     <form onSubmit={createPostHandler}>
@@ -137,7 +137,7 @@ const Forum = () => {
                                 {userInfo && (userInfo.role === 'Admin' || (post.author && post.author._id === userInfo._id)) && (
                                     <button className="btn btn-danger btn-xs" onClick={() => deleteHandler(post._id)}>Delete</button>
                                 )}
-                                {userInfo && userInfo.role === 'Student' && post.author && post.author._id !== userInfo._id && (
+                                {userInfo && post.author && post.author._id !== userInfo._id && (
                                     <button className="btn btn-secondary btn-xs" onClick={() => reportHandler(post._id)}>Report</button>
                                 )}
                             </div>

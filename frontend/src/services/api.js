@@ -8,8 +8,13 @@ const api = axios.create({
 api.interceptors.request.use(
     (config) => {
         const user = JSON.parse(localStorage.getItem('userInfo'));
-        if (user && user.token) {
-            config.headers.Authorization = `Bearer ${user.token}`;
+        if (user) {
+            if (user.isDemo) {
+                config.headers['Demo-Mode'] = 'true';
+                config.headers['Demo-User-Id'] = user.id;
+            } else if (user.token) {
+                config.headers.Authorization = `Bearer ${user.token}`;
+            }
         }
         return config;
     },

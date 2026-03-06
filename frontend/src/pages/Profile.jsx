@@ -50,7 +50,7 @@ const Profile = () => {
                 <h2>Your Academic Profile</h2>
                 {!isEditing ? (
                     <div className="profile-details">
-                        <p><strong>Name:</strong> {profile.user.name}</p>
+                        <p><strong>Name:</strong> {userInfo?.isDemo && userInfo?.role === 'Student' ? 'Karthi Keyan T' : profile.user.name}</p>
                         <p><strong>Email:</strong> {profile.user.email}</p>
                         <p><strong>Roll Number:</strong> {profile.rollNumber}</p>
                         <p><strong>Department:</strong> {profile.department}</p>
@@ -58,6 +58,15 @@ const Profile = () => {
                         <p><strong>CGPA:</strong> {profile.cgpa}</p>
                         <p><strong>Backlogs:</strong> {profile.backlogs}</p>
                         <p><strong>Arrears:</strong> {profile.arrears}</p>
+                        <p>
+                            <strong>Eligibility:</strong>{' '}
+                            <span style={{
+                                color: (profile.cgpa >= 6.0 && profile.backlogs === 0) ? '#27ae60' : '#e74c3c',
+                                fontWeight: 'bold'
+                            }}>
+                                {(profile.cgpa >= 6.0 && profile.backlogs === 0) ? 'Eligible' : 'Not Eligible'}
+                            </span>
+                        </p>
                         {isAdmin && (
                             <button className="btn btn-primary" onClick={() => setIsEditing(true)}>Edit Profile</button>
                         )}

@@ -110,23 +110,30 @@ const ManageStudents = () => {
                             <th>Year</th>
                             <th>CGPA</th>
                             <th>Backlogs</th>
+                            <th>Eligibility</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {students.map(s => (
-                            <tr key={s._id}>
-                                <td>{s.user.name}</td>
-                                <td>{s.rollNumber}</td>
-                                <td>{s.department}</td>
-                                <td>{s.year}</td>
-                                <td>{s.cgpa}</td>
-                                <td>{s.backlogs}</td>
-                                <td>
-                                    <button className="btn btn-primary btn-sm mr-15" onClick={() => handleEdit(s)}>Edit</button>
-                                </td>
-                            </tr>
-                        ))}
+                        {students.map(s => {
+                            const isEligible = s.cgpa >= 6.0 && s.backlogs === 0;
+                            return (
+                                <tr key={s._id}>
+                                    <td>{s.user.name}</td>
+                                    <td>{s.rollNumber}</td>
+                                    <td>{s.department}</td>
+                                    <td>{s.year}</td>
+                                    <td>{s.cgpa}</td>
+                                    <td>{s.backlogs}</td>
+                                    <td style={{ color: isEligible ? '#27ae60' : '#e74c3c', fontWeight: 'bold' }}>
+                                        {isEligible ? 'Eligible' : 'Not Eligible'}
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-primary btn-sm mr-15" onClick={() => handleEdit(s)}>Edit</button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>

@@ -1,0 +1,59 @@
+.role-switcher-banner {
+    background-color: #2c3e50;
+    color: white;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 2px solid #34495e;
+}
+
+.role-switcher-banner .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.divider {
+    color: #7f8c8d;
+    font-weight: 300;
+}
+
+.demo-label {
+    font-weight: bold;
+    color: #f1c40f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.role-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.role-toggle-btn {
+    padding: 2px 12px;
+    border-radius: 20px;
+    border: 1px solid #f1c40f;
+    background-color: transparent;
+    color: #f1c40f;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.role-toggle-btn:hover {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .role-switcher-banner .container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
