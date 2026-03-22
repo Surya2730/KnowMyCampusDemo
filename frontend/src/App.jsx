@@ -86,7 +86,8 @@ function App() {
 
   useEffect(() => {
     const handleStorageChange = () => {
-      setUserInfo(JSON.parse(localStorage.getItem('userInfo')));
+      const stored = localStorage.getItem('userInfo');
+      if (stored) setUserInfo(JSON.parse(stored));
     };
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);

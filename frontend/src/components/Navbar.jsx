@@ -1,17 +1,9 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-const Navbar = ({ userInfo, setUserInfo }) => {
-    const navigate = useNavigate();
+const Navbar = ({ userInfo }) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    const logoutHandler = () => {
-        setIsMenuOpen(false);
-        localStorage.removeItem('userInfo');
-        setUserInfo(null);
-        navigate('/login');
-    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -47,11 +39,7 @@ const Navbar = ({ userInfo, setUserInfo }) => {
                                     <li><Link to="/manage-students" onClick={closeMenu}>Manage Students</Link></li>
                                 </>
                             )}
-                            <li className="logout-btn" onClick={logoutHandler}>Logout</li>
                         </>
-                    )}
-                    {!userInfo && (
-                        <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
                     )}
                 </ul>
             </div>
