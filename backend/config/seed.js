@@ -30,6 +30,7 @@ const seedData = async () => {
 
         // Create Admin
         const admin = await User.create({
+            _id: '6963cb360277a49685415cc5',
             name: 'College Admin',
             email: 'admin@college.edu',
             password: 'adminpassword',
@@ -38,7 +39,8 @@ const seedData = async () => {
 
         // Create Students
         const student1User = await User.create({
-            name: 'John Doe',
+            _id: '6963d54b3151152909a56aee',
+            name: 'Karthi Keyan T',
             email: 'john@student.edu',
             password: 'password123',
             role: 'Student',
