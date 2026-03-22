@@ -28,19 +28,19 @@ const seedData = async () => {
         await Company.deleteMany();
         await Post.deleteMany();
 
-        // Create Admin
+        // Create Admin (Faculty Demo)
         const admin = await User.create({
-            name: 'College Admin',
-            email: 'admin@college.edu',
-            password: 'adminpassword',
+            name: 'Surya Kumar T (Faculty)',
+            email: 'suryaselvam.219@gmail.com',
+            password: 'surya123',
             role: 'Admin',
         });
 
-        // Create Students
+        // Create Students (Student Demo)
         const student1User = await User.create({
-            name: 'John Doe',
-            email: 'john@student.edu',
-            password: 'password123',
+            name: 'Karthi Keyan (Student)',
+            email: 'karthiselvam.2730@gmail.com',
+            password: 'karthi123',
             role: 'Student',
         });
 
