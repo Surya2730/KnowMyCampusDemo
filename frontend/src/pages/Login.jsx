@@ -9,7 +9,17 @@ const Login = ({ setUserInfo }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [showDemo, setShowDemo] = useState(true);
 
+    const fillDemo = (role) => {
+        if (role === 'faculty') {
+            setEmail('suryaselvam.219@gmail.com');
+            setPassword('surya123');
+        } else {
+            setEmail('karthiselvam.2730@gmail.com');
+            setPassword('karthi123');
+        }
+    };
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -42,6 +52,56 @@ const Login = ({ setUserInfo }) => {
                 </center>
                 <h2>Welcome to KnowMyCampus</h2>
                 {error && <div className="error-msg">{error}</div>}
+
+                {showDemo && (
+                    <div className="demo-credentials" style={{
+                        background: '#f8f9fa',
+                        padding: '15px',
+                        borderRadius: '8px',
+                        marginBottom: '20px',
+                        border: '1px dashed #007bff',
+                        fontSize: '0.85rem'
+                    }}>
+                        <div style={{ fontWeight: 'bold', marginBottom: '10px', color: '#007bff', display: 'flex', justifyContent: 'space-between' }}>
+                            Demo Credentials
+                            <span style={{ cursor: 'pointer', color: '#999' }} onClick={() => setShowDemo(false)}>×</span>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                            <div
+                                onClick={() => fillDemo('faculty')}
+                                style={{
+                                    padding: '8px',
+                                    background: '#fff',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s'
+                                }}
+                                onMouseOver={(e) => e.currentTarget.style.borderColor = '#007bff'}
+                                onMouseOut={(e) => e.currentTarget.style.borderColor = '#ddd'}
+                            >
+                                <strong>Faculty</strong><br/>
+                                <span style={{ color: '#666' }}>Click to auto-fill</span>
+                            </div>
+                            <div
+                                onClick={() => fillDemo('student')}
+                                style={{
+                                    padding: '8px',
+                                    background: '#fff',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s'
+                                }}
+                                onMouseOver={(e) => e.currentTarget.style.borderColor = '#28a745'}
+                                onMouseOut={(e) => e.currentTarget.style.borderColor = '#ddd'}
+                            >
+                                <strong>Student</strong><br/>
+                                <span style={{ color: '#666' }}>Click to auto-fill</span>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
                     <GoogleLogin
